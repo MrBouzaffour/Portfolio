@@ -9,7 +9,8 @@ body {
     min-height: 100vh;
 }
 
-/* Navigation Section */
+/* Bnote :  Navigation Section */
+
 nav {
     background-color: #1a1a1a;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -46,7 +47,7 @@ nav {
     color: #00ff00;
 }
 
-/* Header Section */
+/* Bnote : Header Section */
 header {
     color: #fff;
     padding: 20px;
@@ -63,7 +64,7 @@ header h1 {
     color: #6eff6e;
 }
 
-/* Sections */
+/* Bnote : Sections */
 section {
     background-color: #1a1a1a;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -74,14 +75,14 @@ section {
     overflow: hidden; 
 }
 
-/* Section Titles */
+/* Bnote : Section Titles */
 span.section-title {
     font-size: 24px;
     color: #6eff6e;
     margin-bottom: 15px;
 }
 
-/* Section Content with Terminal Vibes */
+/* Bnote : Section Content with Terminal Vibes */
 .section-container {
     font-size: 16px;
     color: #6eff6e;
@@ -93,11 +94,11 @@ span.section-title {
     overflow-x: auto;
 }
 
-/* Links */
+/* Bnote : Links */
 .section-container a {
     color: #00ffcc;
     text-decoration: none;
-    border-bottom: 1px dashed #00ffcc; /* Add a dashed underline for links */
+    border-bottom: 1px dashed #00ffcc;
     transition: color 0.3s ease-in-out;
 }
 
@@ -106,7 +107,7 @@ span.section-title {
     border-bottom-color: #ff00cc; /* Change the underline color on hover */
 }
 
-/* Terminal Code */
+/* Bnote : Terminal Code */
 .code {
     background-color: #2a2a2a;
     padding: 10px;
@@ -115,17 +116,17 @@ span.section-title {
     overflow-x: auto;
 }
 
-/* Terminal Prompt */
+/* Bnote : Terminal Prompt */
 .prompt {
     color: #ffaa00;
 }
 
-/* Dynamic Terminal Prompt Colors */
+/* Bnote : Dynamic Terminal Prompt Colors */
 .code:hover .prompt {
     color: #ff00ff;
 }
 
-/* Footer Section */
+/* Bnote : Footer Section */
 footer {
     background: #1a1a1a;
     color: #fff;
@@ -143,8 +144,8 @@ ul.contact-info {
 
 ul.contact-info li {
     margin: 10px 0;
-    font-size: 18px; /* Increased font size for better readability */
-    font-family: 'Courier New', monospace; /* Use the same font-family as in the sections */
+    font-size: 18px; /* Bnote : Increased font size for better readability */
+    font-family: 'Courier New', monospace; 
 }
 
 ul.contact-info a {
@@ -158,10 +159,10 @@ ul.contact-info a:hover {
 }
 
 .footer-link {
-    font-weight: bold; /* Make links stand out more */
+    font-weight: bold; /* Bnote : Made links stand out more */
 }
 
-/* Animation */
+/* Bnote : Animation */
 @keyframes fadeIn {
     from {
         opacity: 0;
