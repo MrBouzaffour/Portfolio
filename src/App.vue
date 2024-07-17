@@ -120,6 +120,7 @@ nav {
   align-items: center;
   flex-direction: column;
   flex-grow: 1;
+  margin-bottom: 60px; /* Ensure space for the footer */
 }
 
 section {
@@ -162,12 +163,10 @@ footer {
   text-align: center;
   padding: 10px;
   border-radius: 0 0 8px 8px;
-  position: fixed;
-  bottom: 0;
+  margin-top: 20px; /* Space above the footer */
   width: 100%;
+  
   font-size: 12px;
-  
-  
 }
 
 @keyframes fadeIn {
