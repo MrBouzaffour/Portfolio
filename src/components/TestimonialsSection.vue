@@ -13,8 +13,7 @@
     data() {
       return {
         testimonials: [
-          { text: "Ahmed is a fantastic developer with great attention to detail.", author: "John Doe" },
-          { text: "Working with Ahmed has been a pleasure. He's very knowledgeable and professional.", author: "Jane Smith" }
+          { text: "No content ..", author: "User" },
         ]
       };
     }
