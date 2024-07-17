@@ -49,7 +49,11 @@ body {
   min-height: 100vh;
   scroll-behavior: smooth;
 }
-
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* This ensures that #app takes at least the height of the viewport */
+}
 .header-container {
   display: flex;
   justify-content: center;
