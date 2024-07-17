@@ -15,7 +15,7 @@
         <p>{{ project.description }}</p>
         <p>Technologies used: {{ project.technologies.join(', ') }}</p>
         <a :href="project.github" target="_blank">GitHub Link</a>
-        <a :href="project.demo" target="_blank">Live Demo</a>
+      <!-- <a :href="project.demo" target="_blank">Live Demo</a>-->
       </div>
     </div>
   </section>
@@ -33,29 +33,31 @@ export default {
     return {
       projects: [
         {
-          title: 'Social Media Web Application (Ongoing)',
-          image: require('@/assets/project_screenshot.png'),
-          description: 'Currently developing a dynamic and user-friendly Social Media Web Application that allows users to connect, share updates, and engage with content.',
-          technologies: ['HTML', 'CSS', 'JavaScript', 'MongoDB', 'Node.js'],
-          github: 'https://github.com/MrBouzaffour/Social-Media-Web_Application',
-          demo: 'live_demo_link'
+          title: 'Graph-Based Word Prediction System',
+          image:  require('@/assets/WordGraphPredictor.png'),
+          description: 'A system that predicts the next word based on user input using a graph-based approach. It involves data preprocessing, graph construction, and utilizing a command-line interface for interaction.',
+          technologies: ['Java'],
+          github: 'https://github.com/MrBouzaffour/WordGraphPredictor.git', // Replace with your actual GitHub repository URL
+          demo: '' // If there is a live demo, provide the URL
         },
         {
-          title: 'Another Project',
-          image: require('@/assets/project_screenshot.png'),
-          description: 'Description of another project.',
-          technologies: ['Python', 'Flask', 'PostgreSQL'],
-          github: 'https://github.com/MrBouzaffour/Another_Project',
-          demo: 'another_live_demo_link'
-        },
-        // Add more projects here
+          title: 'Simple Database',
+          image: require('@/assets/database_1.png'),
+          description: 'A simple database project developed to showcase basic CRUD operations and database management.',
+          technologies: ['C'],
+          github: 'https://github.com/MrBouzaffour/Simple-Database',
+          demo: ''
+        }
       ]
     };
   }
 }
 </script>
-
 <style scoped>
+section {
+  margin-bottom: 50px; /* Adjust this value based on the desired space */
+}
+
 .projects-container {
   display: flex;
   flex-wrap: wrap;
