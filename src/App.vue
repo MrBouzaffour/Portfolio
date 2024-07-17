@@ -3,9 +3,11 @@
     <div class="header-container">
       <header>
         <h1>Ahmed Bouzaffour</h1>
+        <button class="hamburger" @click="toggleMenu">&#9776;</button>
       </header>
     </div>
-    <nav>
+    <!-- Update class binding for responsiveness -->
+    <nav :class="{ 'is-visible': menuVisible }">
       <ul class="nav-links">
         <li><router-link to="/introduction">Introduction</router-link></li>
         <li><router-link to="/skills">Skills</router-link></li>
@@ -31,11 +33,25 @@
   </div>
 </template>
 
+
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  data() {
+    return {
+      menuVisible: false // Ensure this is false initially
+    };
+  },
+  methods: {
+    toggleMenu() {
+      this.menuVisible = !this.menuVisible;
+      console.log('Menu Visible:', this.menuVisible); // Debugging state change
+    }
+  }
 }
 </script>
+
+
 
 <style>
 body {
@@ -78,7 +94,14 @@ header h1 {
   font-size: 24px;
   color: #6eff6e;
 }
-
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: #6eff6e;
+  font-size: 30px;
+  cursor: pointer;
+}
 nav {
   background-color: #1a1a1a;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -192,27 +215,34 @@ footer {
   opacity: 0;
 }
 
-/* Responsive Styles */
 @media (max-width: 768px) {
+  .hamburger {
+    display: block; /* Ensure button is visible */
+  }
+
+  nav {
+    display: none; /* Initially hide nav */
+  }
+
+  nav.is-visible {
+    display: block; /* Display nav when menuVisible is true */
+  }
+
   .nav-links {
     flex-direction: column;
     align-items: center;
+    width: 100%; /* Full width for small screens */
   }
 
   .nav-links li {
     margin: 10px 0;
+    text-align: center;
   }
 
   header h1 {
-    font-size: 20px;
-  }
-
-  nav {
-    width: 90%;
-  }
-
-  .content-container {
-    width: 90%;
+    font-size: 20px; /* Adjust size for small screens */
   }
 }
+
+
 </style>
