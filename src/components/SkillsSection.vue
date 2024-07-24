@@ -3,7 +3,7 @@
     <h2>Skills</h2>
     <ul>
       <li><strong>Programming Languages:</strong> C ,C++ ,C# ,PHP ,Java ,Python ,JavaScript Bash ,Pascal ,Risc-V</li>
-      <li><strong>Web Technologies:</strong> HTML, CSS, Express, VueJs, Bootstrap </li>
+      <li><strong>Web Technologies:</strong> HTML ,CSS ,Nodejs, VueJs, Bootstrap </li>
       <li><strong>Databases:</strong> MongoDB, SQL</li>
       <li><strong>Version Control:</strong> Git</li>
       <li><strong>Operating Systems:</strong> Windows, Linux</li>
