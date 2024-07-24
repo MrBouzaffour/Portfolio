@@ -14,7 +14,6 @@
         <li><router-link to="/education">Education</router-link></li>
         <li><router-link to="/projects">Projects</router-link></li>
         <li><router-link to="/contact">Contact</router-link></li>
-        <li><router-link to="/testimonials">Testimonials</router-link></li>
       </ul>
     </nav>
     <div class="content-container">
