@@ -3,10 +3,9 @@
     <div class="header-container">
       <header>
         <h1>Ahmed Bouzaffour</h1>
-        <button class="hamburger" @click="toggleMenu">&#9776;</button>
+        <button class="hamburger" aria-label="Toggle menu" @click="toggleMenu">&#9776;</button>
       </header>
     </div>
-    <!-- Update class binding for responsiveness -->
     <nav :class="{ 'is-visible': menuVisible }">
       <ul class="nav-links">
         <li><router-link to="/introduction">Introduction</router-link></li>
@@ -16,11 +15,11 @@
         <li><router-link to="/contact">Contact</router-link></li>
       </ul>
     </nav>
-    <div class="content-container">
+    <main class="content-container">
       <transition name="fade">
         <router-view></router-view>
       </transition>
-    </div>
+    </main>
     <footer>
       <ul class="contact-info">
         <li>Email: <a href="mailto:ahmedbouzaffour2002@gmail.com">ahmedbouzaffour2002@gmail.com</a></li>
@@ -33,22 +32,24 @@
 </template>
 
 
+
 <script>
 export default {
   name: 'App',
   data() {
     return {
-      menuVisible: false // Ensure this is false initially
+      menuVisible: false // Controls the visibility of the menu
     };
   },
   methods: {
     toggleMenu() {
-      this.menuVisible = !this.menuVisible;
-      console.log('Menu Visible:', this.menuVisible); // Debugging state change
+      this.menuVisible = !this.menuVisible; // Toggle the visibility state
+      console.log('Menu visibility:', this.menuVisible); // Log state changes for debugging
     }
   }
 }
 </script>
+
 
 
 
