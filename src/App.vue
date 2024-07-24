@@ -23,13 +23,13 @@
     <footer>
       <ul class="contact-info">
         <li>Email: <a href="mailto:ahmedbouzaffour2002@gmail.com">ahmedbouzaffour2002@gmail.com</a></li>
-        <li>Phone: <a href="tel:+13062032113">+1 306 203 2113</a></li>
         <li><a href="https://www.linkedin.com/in/ahmed-bouzaffour-6610052a5" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
         <li><a href="https://github.com/MrBouzaffour" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
       </ul>
     </footer>
   </div>
 </template>
+
 
 
 
@@ -44,7 +44,6 @@ export default {
   methods: {
     toggleMenu() {
       this.menuVisible = !this.menuVisible; // Toggle the visibility state
-      console.log('Menu visibility:', this.menuVisible); // Log state changes for debugging
     }
   }
 }
@@ -68,7 +67,7 @@ body {
 #app {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* This ensures that #app takes at least the height of the viewport */
+  min-height: 100vh;
 }
 .header-container {
   display: flex;
@@ -77,18 +76,15 @@ body {
   background-color: #1a1a1a;
   border-bottom: 2px solid #444;
 }
-
 header {
   color: #fff;
   padding: 20px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  max-width: 800px;
+  justify-content: space-between;
   width: 100%;
+  max-width: 800px;
 }
-
 header h1 {
   margin: 10px 0;
   font-size: 24px;
@@ -111,7 +107,6 @@ nav {
   width: 80%;
   max-width: 800px;
 }
-
 .nav-links {
   list-style: none;
   padding: 0;
@@ -119,21 +114,17 @@ nav {
   display: flex;
   justify-content: space-around;
 }
-
 .nav-links li {
   font-size: 16px;
 }
-
 .nav-links a {
   color: #6eff6e;
   text-decoration: none;
   transition: color 0.3s ease-in-out;
 }
-
 .nav-links a:hover {
   color: #00ff00;
 }
-
 .content-container {
   background-color: #1a1a1a;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -147,55 +138,46 @@ nav {
   align-items: center;
   flex-direction: column;
   flex-grow: 1;
-  margin-bottom: 60px; /* Ensure space for the footer */
+  margin-bottom: 60px;
 }
-
 section {
   width: 100%;
   color: #6eff6e;
 }
-
 h2 {
   font-size: 24px;
   color: #6eff6e;
   margin-bottom: 15px;
 }
-
 ul.contact-info {
   list-style: none;
   padding: 0;
   margin: 0;
   text-align: center;
 }
-
 ul.contact-info li {
   margin: 5px 0;
   font-size: 14px;
   font-family: 'Courier New', monospace;
 }
-
 ul.contact-info a {
   color: #6eff6e;
   text-decoration: none;
   transition: color 0.3s ease-in-out;
 }
-
 ul.contact-info a:hover {
   color: #00ff00;
 }
-
 footer {
   background: #1a1a1a;
   color: #fff;
   text-align: center;
   padding: 10px;
   border-radius: 0 0 8px 8px;
-  margin-top: 20px; /* Space above the footer */
+  margin-top: 20px;
   width: 100%;
-  
   font-size: 12px;
 }
-
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -206,43 +188,31 @@ footer {
     transform: translateY(0);
   }
 }
-
 .fade-enter-active, .fade-leave-active {
   transition: opacity 0.5s;
 }
-
-.fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+.fade-enter, .fade-leave-to {
   opacity: 0;
 }
-
 @media (max-width: 768px) {
   .hamburger {
-    display: block; /* Ensure button is visible */
+    display: block;
   }
-
   nav {
-    display: none; /* Initially hide nav */
+    display: none;
   }
-
   nav.is-visible {
-    display: block; /* Display nav when menuVisible is true */
+    display: block;
   }
-
   .nav-links {
     flex-direction: column;
     align-items: center;
-    width: 100%; /* Full width for small screens */
   }
-
   .nav-links li {
     margin: 10px 0;
-    text-align: center;
   }
-
   header h1 {
-    font-size: 20px; /* Adjust size for small screens */
+    font-size: 20px;
   }
 }
-
-
 </style>

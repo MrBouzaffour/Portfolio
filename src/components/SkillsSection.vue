@@ -1,12 +1,12 @@
 <template>
-  <section>
+  <section class="skills">
     <h2>Skills</h2>
     <ul>
-      <li>Programming Languages: C, Java, Python, JavaScript, Bash</li>
-      <li>Web Technologies: HTML, CSS, Express</li>
-      <li>Databases: MongoDB, SQL</li>
-      <li>Version Control: Git</li>
-      <li>Operating Systems: Windows, Linux</li>
+      <li><strong>Programming Languages:</strong> C, Java, Python, JavaScript, Bash</li>
+      <li><strong>Web Technologies:</strong> HTML, CSS, Express</li>
+      <li><strong>Databases:</strong> MongoDB, SQL</li>
+      <li><strong>Version Control:</strong> Git</li>
+      <li><strong>Operating Systems:</strong> Windows, Linux</li>
     </ul>
   </section>
 </template>
@@ -23,5 +23,32 @@ export default {
 </script>
 
 <style scoped>
-/* Add scoped styles here */
+.skills {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  text-align: left;
+  padding: 30px;
+  border-radius: 8px;
+}
+.skills h2 {
+  font-size: 32px;
+  color: #6eff6e;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #6eff6e;
+  padding-bottom: 10px;
+}
+.skills ul {
+  list-style-type: none;
+  padding: 0;
+}
+.skills li {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+.skills strong {
+  color: #6eff6e;
+}
 </style>

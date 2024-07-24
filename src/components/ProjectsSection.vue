@@ -1,21 +1,15 @@
 <template>
-  <section>
-    <h2>Projects : </h2>
-    <br>
-    <br>
-
+  <section class="projects">
+    <h2>Projects</h2>
     <div class="projects-container">
-      <div 
-        class="project" 
-        v-for="(project, index) in projects" 
-        :key="index"
-      >
+      <div class="project" v-for="(project, index) in projects" :key="index">
         <h3>{{ project.title }}</h3>
-        <img :src="project.image" :alt="`Screenshot of ${project.title}`">
+        <img :src="project.image" :alt="`Screenshot of ${project.title}`" />
         <p>{{ project.description }}</p>
-        <p>Technologies used: {{ project.technologies.join(', ') }}</p>
+        <p><strong>Technologies used:</strong> {{ project.technologies.join(', ') }}</p>
         <a :href="project.github" target="_blank">GitHub Link</a>
-      <!-- <a :href="project.demo" target="_blank">Live Demo</a>-->
+        <!-- Uncomment if there is a live demo -->
+        <!-- <a :href="project.demo" target="_blank">Live Demo</a> -->
       </div>
     </div>
   </section>
@@ -34,11 +28,11 @@ export default {
       projects: [
         {
           title: 'Graph-Based Word Prediction System',
-          image:  require('@/assets/WordGraphPredictor.png'),
+          image: require('@/assets/WordGraphPredictor.png'),
           description: 'A system that predicts the next word based on user input using a graph-based approach. It involves data preprocessing, graph construction, and utilizing a command-line interface for interaction.',
           technologies: ['Java'],
-          github: 'https://github.com/MrBouzaffour/WordGraphPredictor.git', // Replace with your actual GitHub repository URL
-          demo: '' // If there is a live demo, provide the URL
+          github: 'https://github.com/MrBouzaffour/WordGraphPredictor.git',
+          demo: ''
         },
         {
           title: 'Simple Database',
@@ -53,9 +47,24 @@ export default {
   }
 }
 </script>
+
 <style scoped>
-section {
-  margin-bottom: 50px; /* Adjust this value based on the desired space */
+.projects {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 1000px;
+  text-align: center;
+}
+
+.projects h2 {
+  font-size: 32px;
+  color: #6eff6e;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #6eff6e;
+  padding-bottom: 10px;
 }
 
 .projects-container {
@@ -66,14 +75,14 @@ section {
 }
 
 .project {
-  background-color: #1a1a1a;
+  background-color: #2a2a2a;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   width: 300px;
   margin-bottom: 20px;
-  text-align: center;
+  text-align: left;
 }
 
 .project:hover {
@@ -84,6 +93,12 @@ section {
 .project img {
   max-width: 100%;
   border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.project p {
+  font-size: 16px;
+  line-height: 1.4;
   margin-bottom: 10px;
 }
 
