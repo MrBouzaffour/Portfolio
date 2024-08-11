@@ -1,4 +1,4 @@
-# my-portfolio
+# Portfolio Website
 Demo : [bouzaffour.xyz](https://www.bouzaffour.xyz/).
 ## Project setup
 ```
@@ -20,5 +20,3 @@ npm run build
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
