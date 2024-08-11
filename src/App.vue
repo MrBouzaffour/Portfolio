@@ -38,12 +38,12 @@ export default {
   name: 'App',
   data() {
     return {
-      menuVisible: false // Controls the visibility of the menu
+      menuVisible: false 
     };
   },
   methods: {
     toggleMenu() {
-      this.menuVisible = !this.menuVisible; // Toggle the visibility state
+      this.menuVisible = !this.menuVisible;
     }
   }
 }
