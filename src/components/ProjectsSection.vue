@@ -27,6 +27,14 @@ export default {
     return {
       projects: [
         {
+          title: 'GitSentry',
+          image: require('@/assets/GitSentry.png'),
+          description: 'GitSentry is an advanced shell script for streamlining Git operations. It features automated backups, branch validation, and custom pre-push checks, ensuring secure and efficient development workflows.',
+          technologies: ['Bash'],
+          github: 'https://github.com/MrBouzaffour/GitSentry.git',
+          demo: ''
+        },
+        {
           title: 'Graph-Based Word Prediction System',
           image: require('@/assets/WordGraphPredictor.png'),
           description: 'A system that predicts the next word based on user input using a graph-based approach. It involves data preprocessing, graph construction, and utilizing a command-line interface for interaction.',
