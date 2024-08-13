@@ -52,7 +52,7 @@ export default {
         },
         {
           title: 'Automated Email Sender',
-          //image: require('@/assets/database_1.png'),
+          image: require('@/assets/database_1.png'),
           description: 'This Python script allows users to send automated emails with ease. Leveraging smtplib and email libraries, the script supports plain text and HTML emails. Its designed to be secure and flexible, using environment variables to handle email credentials.',
           technologies: ['Python'],
           github: 'https://github.com/MrBouzaffour/Automated-Email-Sender.git',
