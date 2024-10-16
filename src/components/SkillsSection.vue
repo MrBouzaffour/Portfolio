@@ -2,7 +2,7 @@
   <section class="skills">
     <h2>Skills</h2>
     <ul>
-      <li><strong>Programming Languages: </strong> C ,C++ ,C# ,PHP ,Java ,Python ,JavaScript ,Bash ,Pascal ,Risc-V </li>
+      <li><strong>Programming Languages: </strong> C ,C++ ,C# ,PHP ,Java, JavaScript ,Bash ,Pascal ,Risc-V </li>
       <li><strong>Development Technologies :</strong> HTML ,CSS,React ,Nodejs, VueJs, Bootstrap,Docker , NGINX  </li>
       <li><strong>Databases:</strong> MongoDB, SQL, Firebase </li>
       <li><strong>Version Control:</strong> Git</li>
