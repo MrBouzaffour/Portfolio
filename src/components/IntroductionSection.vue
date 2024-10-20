@@ -1,7 +1,7 @@
 <template>
   <section class="introduction">
     <h2>About Me</h2>
-    <p>Greetings! I am Ahmed Bouzaffour, currently pursuing a degree in Computer Science at the University of Saskatchewan. My academic journey has been fueled by a fervent passion for innovation and an aptitude for problem-solving.</p>
+    <p>I am Ahmed Bouzaffour, currently pursuing a degree in Computer Science at the University of Saskatchewan. My academic journey has been fueled by a fervent passion for innovation and an aptitude for problem-solving.</p>
     <p>My expertise spans software development and web applications, where I continuously strive to enhance my skills and knowledge.</p>
     <p>This portfolio is a testament to my commitment to developing robust, cutting-edge solutions. I am enthusiastic about new opportunities and collaborations that make a meaningful impact in the tech industry.</p>
     <p>Let's connect and explore the possibilities of working together on exciting projects!</p>
