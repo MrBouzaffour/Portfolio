@@ -18,7 +18,7 @@
           <div class="info-icon">💼</div>
           <h3>LinkedIn</h3>
           <p>Connect with me professionally</p>
-          <a href="https://www.linkedin.com/in/ahmed-bouzaffour-6610052a5" target="_blank" class="contact-action">View Profile</a>
+          <a href="https://www.linkedin.com/in/ahmed-bouzaffour-79b78b270" target="_blank" class="contact-action">View Profile</a>
         </div>
         
         <div class="info-card">

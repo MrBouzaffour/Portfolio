@@ -45,7 +45,7 @@
         <li><a href="mailto:ahmedbouzaffour2002@gmail.com" class="contact-link">
           <span class="icon">📧</span> ahmedbouzaffour2002@gmail.com
         </a></li>
-        <li><a href="https://www.linkedin.com/in/ahmed-bouzaffour-6610052a5" target="_blank" class="contact-link">
+        <li><a href="https://www.linkedin.com/in/ahmed-bouzaffour-79b78b270" target="_blank" class="contact-link">
           <span class="icon">💼</span> LinkedIn
         </a></li>
         <li><a href="https://github.com/MrBouzaffour" target="_blank" class="contact-link">
