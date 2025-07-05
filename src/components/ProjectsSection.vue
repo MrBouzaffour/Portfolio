@@ -1,16 +1,87 @@
 <template>
   <section class="projects">
-    <h2>Projects</h2>
+    <h2 class="section-title">
+      <span class="title-text">Projects</span>
+      <span class="title-underline"></span>
+    </h2>
+    
+    <div class="filter-container">
+      <button 
+        v-for="filter in filters" 
+        :key="filter"
+        @click="setFilter(filter)"
+        :class="['filter-btn', { active: currentFilter === filter }]"
+      >
+        {{ filter }}
+      </button>
+    </div>
+    
     <div class="projects-container">
-      <div class="project" v-for="(project, index) in projects" :key="index">
-        <h3>{{ project.title }}</h3>
-        <img :src="project.image" :alt="`Screenshot of ${project.title}`" />
-        <p>{{ project.description }}</p>
-        <p><strong>Technologies used:</strong> {{ project.technologies.join(', ') }}</p>
-        <a :href="project.github" target="_blank">GitHub Link</a>
-        <!-- Uncomment if there is a live demo -->
-        <!-- <a :href="project.demo" target="_blank">Live Demo</a> -->
+      <div 
+        v-for="(project, index) in filteredProjects" 
+        :key="index"
+        class="project-card"
+        :style="{ animationDelay: `${index * 0.1}s` }"
+        @mouseenter="handleMouseEnter"
+        @mouseleave="handleMouseLeave"
+        @mousemove="handleMouseMove"
+      >
+        <div class="card-inner">
+          <div class="project-image">
+            <img :src="project.image" :alt="`Screenshot of ${project.title}`" />
+            <div class="image-overlay">
+              <div class="overlay-content">
+                <span class="view-project">View Project</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="project-content">
+            <h3 class="project-title">{{ project.title }}</h3>
+            <p class="project-description">{{ project.description }}</p>
+            
+            <div class="tech-stack">
+              <span 
+                v-for="tech in project.technologies" 
+                :key="tech"
+                class="tech-tag"
+              >
+                {{ tech }}
+              </span>
+            </div>
+            
+            <div class="project-links">
+              <a 
+                :href="project.github" 
+                target="_blank" 
+                class="project-link github-link"
+                @click.stop
+              >
+                <span class="link-icon">🐙</span>
+                <span>GitHub</span>
+              </a>
+              <a 
+                v-if="project.demo" 
+                :href="project.demo" 
+                target="_blank" 
+                class="project-link demo-link"
+                @click.stop
+              >
+                <span class="link-icon">🚀</span>
+                <span>Live Demo</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card-glow"></div>
       </div>
+    </div>
+    
+    <div v-if="filteredProjects.length === 0" class="no-projects">
+      <div class="no-projects-icon">🔍</div>
+      <p>No projects found for "{{ currentFilter }}"</p>
+      <button @click="setFilter('All')" class="reset-filter">Show All Projects</button>
     </div>
   </section>
 </template>
@@ -18,19 +89,17 @@
 <script>
 export default {
   name: 'ProjectsSection',
-  beforeRouteEnter(to, from, next) {
-    document.title = 'Projects - Ahmed Bouzaffour';
-    document.querySelector('meta[name="description"]').setAttribute('content', 'Projects page of Ahmed Bouzaffour');
-    next();
-  },
   data() {
     return {
+      currentFilter: 'All',
+      filters: ['All', 'Web Development', 'System Programming', 'Automation', 'Data Structures'],
       projects: [
         {
           title: 'GitSentry',
           image: require('@/assets/GitSentry.png'),
           description: 'GitSentry is an advanced shell script for streamlining Git operations. It features automated backups, branch validation, and custom pre-push checks, ensuring secure and efficient development workflows.',
-          technologies: ['Bash'],
+          technologies: ['Bash', 'Shell Scripting', 'Git'],
+          category: 'Automation',
           github: 'https://github.com/MrBouzaffour/GitSentry.git',
           demo: ''
         },
@@ -38,7 +107,8 @@ export default {
           title: 'Graph-Based Word Prediction System',
           image: require('@/assets/WordGraphPredictor.png'),
           description: 'A system that predicts the next word based on user input using a graph-based approach. It involves data preprocessing, graph construction, and utilizing a command-line interface for interaction.',
-          technologies: ['Java'],
+          technologies: ['Java', 'Data Structures', 'Algorithms'],
+          category: 'Data Structures',
           github: 'https://github.com/MrBouzaffour/WordGraphPredictor.git',
           demo: ''
         },
@@ -46,7 +116,8 @@ export default {
           title: 'Simple Database',
           image: require('@/assets/database_1.png'),
           description: 'A simple database project developed to showcase basic CRUD operations and database management.',
-          technologies: ['C'],
+          technologies: ['C', 'Database Design', 'System Programming'],
+          category: 'System Programming',
           github: 'https://github.com/MrBouzaffour/Simple-Database',
           demo: ''
         },
@@ -54,79 +125,393 @@ export default {
           title: 'Automated Email Sender',
           image: require('@/assets/no-image-available.png'),
           description: 'This Python script allows users to send automated emails with ease. Leveraging smtplib and email libraries, the script supports plain text and HTML emails. Its designed to be secure and flexible, using environment variables to handle email credentials.',
-          technologies: ['Python'],
+          technologies: ['Python', 'SMTP', 'Automation'],
+          category: 'Automation',
           github: 'https://github.com/MrBouzaffour/Automated-Email-Sender.git',
           demo: ''
         }
       ]
     };
+  },
+  computed: {
+    filteredProjects() {
+      if (this.currentFilter === 'All') {
+        return this.projects;
+      }
+      return this.projects.filter(project => project.category === this.currentFilter);
+    }
+  },
+  methods: {
+    setFilter(filter) {
+      this.currentFilter = filter;
+    },
+    handleMouseEnter(event) {
+      const card = event.currentTarget;
+      card.style.transform = 'translateY(-10px) rotateX(5deg) rotateY(5deg)';
+    },
+    handleMouseLeave(event) {
+      const card = event.currentTarget;
+      card.style.transform = 'translateY(0) rotateX(0) rotateY(0)';
+    },
+    handleMouseMove(event) {
+      const card = event.currentTarget;
+      const rect = card.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+      
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      
+      const rotateX = (y - centerY) / 10;
+      const rotateY = (centerX - x) / 10;
+      
+      card.style.transform = `translateY(-10px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    }
+  },
+  beforeRouteEnter(to, from, next) {
+    document.title = 'Projects - Ahmed Bouzaffour';
+    document.querySelector('meta[name="description"]').setAttribute('content', 'Projects page of Ahmed Bouzaffour');
+    next();
   }
 }
 </script>
 
 <style scoped>
 .projects {
-  background-color: #1a1a1a;
-  color: #ffffff;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 1000px;
-  text-align: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-.projects h2 {
-  font-size: 32px;
-  color: #6eff6e;
-  margin-bottom: 20px;
-  border-bottom: 2px solid #6eff6e;
-  padding-bottom: 10px;
+.section-title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.title-text {
+  font-size: 3rem;
+  font-weight: 900;
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.title-underline {
+  display: block;
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  margin: 0 auto;
+  border-radius: 2px;
+  animation: slideIn 1s ease-out;
+}
+
+@keyframes slideIn {
+  from { width: 0; }
+  to { width: 100px; }
+}
+
+.filter-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.filter-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--primary-color);
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  font-weight: 500;
+}
+
+.filter-btn:hover {
+  background: rgba(110, 255, 110, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(110, 255, 110, 0.3);
+}
+
+.filter-btn.active {
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  color: #000;
+  box-shadow: 0 5px 15px rgba(110, 255, 110, 0.4);
 }
 
 .projects-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.project-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  animation: fadeInUp 0.6s ease forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.project-card:nth-child(1) { animation-delay: 0.1s; }
+.project-card:nth-child(2) { animation-delay: 0.2s; }
+.project-card:nth-child(3) { animation-delay: 0.3s; }
+.project-card:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card-inner {
+  position: relative;
+  z-index: 2;
+}
+
+.project-image {
+  position: relative;
+  overflow: hidden;
+  height: 200px;
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.project-card:hover .image-overlay {
+  opacity: 1;
+}
+
+.project-card:hover .project-image img {
+  transform: scale(1.1);
+}
+
+.overlay-content {
+  text-align: center;
+}
+
+.view-project {
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.project-content {
+  padding: 25px;
+}
+
+.project-title {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  margin: 0 0 15px 0;
+  font-weight: 700;
+}
+
+.project-description {
+  color: #ffffff;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  opacity: 0.9;
+}
+
+.tech-stack {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-}
-
-.project {
-  background-color: #2a2a2a;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  width: 300px;
+  gap: 8px;
   margin-bottom: 20px;
-  text-align: left;
 }
 
-.project:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+.tech-tag {
+  background: rgba(110, 255, 110, 0.2);
+  color: var(--primary-color);
+  padding: 5px 12px;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: 1px solid rgba(110, 255, 110, 0.3);
 }
 
-.project img {
-  max-width: 100%;
-  border-radius: 8px;
-  margin-bottom: 10px;
+.project-links {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
 }
 
-.project p {
-  font-size: 16px;
-  line-height: 1.4;
-  margin-bottom: 10px;
-}
-
-.project a {
-  display: block;
-  margin-top: 10px;
-  color: #6eff6e;
+.project-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 20px;
   text-decoration: none;
-  transition: color 0.3s ease;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.project a:hover {
-  color: #00ff00;
+.github-link {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--primary-color);
+}
+
+.github-link:hover {
+  background: rgba(110, 255, 110, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(110, 255, 110, 0.3);
+}
+
+.demo-link {
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  color: #000;
+}
+
+.demo-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(110, 255, 110, 0.4);
+}
+
+.link-icon {
+  font-size: 1.1rem;
+}
+
+.card-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent, rgba(110, 255, 110, 0.1), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.project-card:hover .card-glow {
+  opacity: 1;
+}
+
+.no-projects {
+  text-align: center;
+  padding: 60px 20px;
+  color: #ffffff;
+}
+
+.no-projects-icon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  opacity: 0.5;
+}
+
+.no-projects p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  opacity: 0.8;
+}
+
+.reset-filter {
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  color: #000;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.reset-filter:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(110, 255, 110, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .title-text {
+    font-size: 2rem;
+  }
+  
+  .projects-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .project-card {
+    margin-bottom: 20px;
+  }
+  
+  .filter-container {
+    gap: 10px;
+  }
+  
+  .filter-btn {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+  
+  .project-links {
+    flex-direction: column;
+  }
+  
+  .project-link {
+    justify-content: center;
+  }
+}
+
+/* Light theme overrides */
+:global(.light-theme) .project-card {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+:global(.light-theme) .project-description {
+  color: var(--text-light);
+}
+
+:global(.light-theme) .filter-btn {
+  background: rgba(0, 0, 0, 0.1);
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+:global(.light-theme) .no-projects {
+  color: var(--text-light);
+}
+
+.light-theme :deep(.project-description),
+.light-theme :deep(.project-details),
+.light-theme :deep(.project-card) p {
+  color: var(--text-light) !important;
 }
 </style>
