@@ -19,13 +19,14 @@
     <div class="projects-container">
       <div 
         v-for="(project, index) in filteredProjects" 
-        :key="index"
+        :key="project.title" 
         class="project-card"
         :style="{ animationDelay: `${index * 0.1}s` }"
         @mouseenter="handleMouseEnter"
         @mouseleave="handleMouseLeave"
         @mousemove="handleMouseMove"
-      >
+>
+
         <div class="card-inner">
           <div class="project-image">
             <img :src="project.image" :alt="`Screenshot of ${project.title}`" />
@@ -94,6 +95,67 @@ export default {
       currentFilter: 'All',
       projects: [
         {
+          title: 'Trading Journal (Full-Stack)',
+          image: require('@/assets/trading_journal.png'),
+          description:
+            'A full-stack Trading Journal that helps traders log trades, analyze performance, and improve decision-making. It offers trade templates, reminders, goal tracking, a rich analytics dashboard, and an AI assistant experience, built with React (Vite) and a secure Express API backed by CouchDB, all dockerized for easy deployment.',
+          technologies: ['React', 'Vite', 'Express', 'Node.js', 'CouchDB', 'Docker', 'JWT', 'Charting', 'AI'],
+          category: ['Web Development', 'Automation','Full Stack'], 
+          github: 'https://github.com/MrBouzaffour/trading-journal.git', 
+          demo: '' },
+        {
+          title: 'Generic Hash Table (C)',
+          image: require('@/assets/no-image-available.png'),
+          description:
+            'A generic hash table in C supporting int and string keys. Includes separate hash functions, insert/search, table printing, and cleanup. Resize/delete are stubbed for future work.',
+          technologies: ['C', 'Data Structures', 'Hash Tables'],
+          category: ['Data Structures', 'System Programming'],
+          github: 'https://github.com/MrBouzaffour/HashTable-in-C.git', 
+          demo: ''
+},
+      {
+        title: 'Bouncy Ball (SDL2)',
+        image: require('@/assets/bouncy_ball.png'),
+        description:
+          'C/SDL2 simulation of a bouncing ball with gravity, damping, wall collisions, and a fading trajectory trail. Uses a fixed-size window surface and per-pixel drawing.',
+        technologies: ['C', 'SDL2', 'Graphics', 'Physics'],
+        category: ['System Programming', 'Graphics'],
+        github: '',
+        demo: ''
+        },
+      
+       {
+        title: 'Mini Heap Allocator (C)',
+        image: require('@/assets/no-image-available.png'), 
+        description:
+          'A simple first-fit heap allocator in C with a fixed-size heap, free/allocated chunk lists, insert/remove, and a custom bsearch-based lookup. Supports alloc/free and dumps chunk state for debugging.',
+        technologies: ['C', 'Memory Management', 'Data Structures', 'Systems'],
+        category: ['System Programming', 'Data Structures'],
+        github: 'https://github.com/MrBouzaffour/Malloc-in-C.git',
+        demo: ''
+       },
+ 
+      {
+        title: 'Portfolio v1.0',
+        image: require('@/assets/portfolio_v1.png'), 
+        description:
+          'First release of my personal portfolio built with Vue.',
+        technologies: ['Vue', 'JavaScript', 'CSS'],
+        category: ['Web Development', 'Frontend'],
+        github: 'https://github.com/MrBouzaffour/Portfolio.git',
+        demo: ''
+      },
+      {
+        title: 'Mini Library CLI (C)',
+        image: require('@/assets/no-image-available.png'), 
+        description:
+          'An interactive C CLI to manage libraries and books. Supports commands like ".exit", "show", and "use <lib>". Implements custom input buffering, parsing, and in-memory data structures (Libraries, Library, Book, Author) with enums for command handling.',
+        technologies: ['C', 'CLI', 'Parsing', 'Memory Management'],
+        category: ['System Programming', 'Data Structures'],
+        github: 'https://github.com/MrBouzaffour/LibraryManager.git', 
+        demo: ''
+      },
+        {
           title: 'GitSentry',
           image: require('@/assets/GitSentry.png'),
           description: 'GitSentry is an advanced shell script for streamlining Git operations. It features automated backups, branch validation, and custom pre-push checks, ensuring secure and efficient development workflows.',
@@ -107,7 +169,7 @@ export default {
           image: require('@/assets/WordGraphPredictor.png'),
           description: 'A system that predicts the next word based on user input using a graph-based approach. It involves data preprocessing, graph construction, and utilizing a command-line interface for interaction.',
           technologies: ['Java', 'Data Structures', 'Algorithms'],
-          category: ['Data Structures', 'Java'],
+          category: ['Data Structures'],
           github: 'https://github.com/MrBouzaffour/WordGraphPredictor.git',
           demo: ''
         },
