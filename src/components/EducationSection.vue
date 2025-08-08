@@ -4,140 +4,193 @@
       <span class="title-text">Education</span>
       <span class="title-underline"></span>
     </h2>
-    <div class="education-details">
-      <div class="education-card">
-        <div class="edu-icon">🎓</div>
-        <div class="edu-info">
-          <p class="edu-school"><strong>University of Saskatchewan</strong></p>
-          <p class="edu-degree">Bachelor of Science in Computer Science</p>
+
+    <ul class="timeline" role="list">
+      <li v-for="(e,i) in items" :key="i" class="timeline-item">
+        <span class="dot" aria-hidden="true"></span>
+        <div class="bubble">
+          <div class="row">
+            <span class="when">{{ e.date }}</span>
+            <span class="icon" :aria-label="e.type" role="img">{{ e.icon }}</span>
+          </div>
+
+          <h3 class="school">{{ e.school }}</h3>
+          <p class="degree">{{ e.degree }}</p>
+          <p v-if="e.meta" class="meta">{{ e.meta }}</p>
+
+          <div v-if="e.tags?.length" class="tags">
+            <span v-for="t in e.tags" :key="t" class="tag">{{ t }}</span>
+          </div>
         </div>
-      </div>
-      <!-- Example certificate card -->
-      <div class="education-card certificate-card">
-        <div class="edu-icon">📜</div>
-        <div class="edu-info">
-          <p class="edu-school"><strong>Coursera</strong></p>
-          <p class="edu-degree">Supervised Machine Learning (Andrew Ng, Stanford Online)</p>
-          <p class="edu-meta">Issued: 2023 &bull; Credential ID: 1234-5678</p>
-        </div>
-      </div>
-    </div>
+      </li>
+    </ul>
   </section>
 </template>
 
 <script>
 export default {
   name: 'EducationSection',
+  data() {
+    return {
+      items: [
+        {
+          type: 'degree',
+          icon: '🎓',
+          school: 'University of Saskatchewan',
+          degree: 'B.Sc. Computer Science',
+          date: '2022 — Present',
+          tags: [],//['Algorithms', 'Networks', 'Systems'],
+        },
+        {
+          type: 'certificate',
+          icon: '📜',
+          school: 'Coursera',
+          degree: 'Supervised Machine Learning (Andrew Ng, Stanford Online)',
+          date: 'Issued: 2023',
+          meta: '',//'Credential ID: 1234-5678',
+          tags:[],// ['ML', 'Regression', 'Classification'],
+        },
+      ],
+    };
+  },
   beforeRouteEnter(to, from, next) {
     document.title = 'Education - Ahmed Bouzaffour';
-    document.querySelector('meta[name="description"]').setAttribute('content', 'Education page of Ahmed Bouzaffour');
+    document
+      .querySelector('meta[name="description"]')
+      .setAttribute('content', 'Education page of Ahmed Bouzaffour');
     next();
-  }
-}
+  },
+};
 </script>
 
 <style scoped>
 .education {
   width: 100%;
-  max-width: 1000px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 40px 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
-.section-title {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
+.section-title { text-align: center; margin-bottom: 28px; }
 .title-text {
-  font-size: 2.5rem;
-  font-weight: 900;
+  font-size: 2.2rem; font-weight: 900;
   background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  display: block;
-  margin-bottom: 10px;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
-
 .title-underline {
-  display: block;
-  width: 100px;
-  height: 4px;
+  width: 84px; height: 4px; margin: 10px auto 0; border-radius: 2px;
   background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-  margin: 0 auto;
-  border-radius: 2px;
-  animation: slideIn 1s ease-out;
 }
 
-@keyframes slideIn {
-  from { width: 0; }
-  to { width: 100px; }
-}
-
-.education-details {
+/* Timeline layout */
+.timeline {
+  position: relative;
+  margin: 0;
+  padding: 0 0 0 20px;
+  list-style: none;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 30px;
 }
 
-.education-card {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  padding: 30px 40px;
-  display: flex;
-  align-items: center;
-  gap: 30px;
-  box-shadow: 0 10px 30px rgba(110, 255, 110, 0.1);
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 9px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(255, 255, 255, .15);
+}
+
+.timeline-item {
+  position: relative;
+  margin: 0 0 16px 0;
+}
+
+.timeline-item .dot {
+  position: absolute;
+  left: -1px;
+  top: 8px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  box-shadow: 0 0 0 4px rgba(110, 255, 110, .15);
+}
+
+.timeline-item .bubble {
+  margin-left: 16px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, .05);
+  border: 1px solid rgba(255, 255, 255, .12);
   backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
 }
 
-.education-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+.timeline-item .bubble:hover {
+  transform: translateY(-2px);
   border-color: var(--primary-color);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, .18);
 }
 
-.edu-icon {
-  font-size: 3rem;
-  margin-right: 20px;
-}
-
-.edu-info {
+.timeline-item .row {
   display: flex;
-  flex-direction: column;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 6px;
 }
 
-.edu-school {
-  font-size: 1.3rem;
-  color: var(--primary-color);
-  font-weight: 700;
-  margin-bottom: 8px;
+.timeline-item .when {
+  font-size: .95rem;
+  color: var(--text-muted, #9ca3af);
 }
 
-.edu-degree {
+.timeline-item .icon {
   font-size: 1.1rem;
-  color: #4b5563;
-  opacity: 0.9;
-  margin-bottom: 0;
 }
 
-.certificate-card {
-  border-left: 5px solid var(--primary-color);
-  background: rgba(255,255,255,0.08);
+.timeline-item .school {
+  margin: 0;
+  color: var(--primary-color);
+  font-size: 1.05rem;
+  font-weight: 700;
 }
 
-.edu-meta {
-  font-size: 0.95rem;
-  color: #6b7280;
-  margin-top: 6px;
+.timeline-item .degree {
+  margin: 4px 0 0;
+  color: var(--text, #e5e7eb);
+  line-height: 1.5;
+}
+
+.timeline-item .meta {
+  margin: 6px 0 0;
+  color: var(--text-muted, #9ca3af);
+  font-size: .95rem;
+}
+
+.tags {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  border: 1px solid rgba(255, 255, 255, .18);
+  background: rgba(110, 255, 110, .14);
+  color: var(--primary-color);
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: .8rem;
+  font-weight: 600;
+}
+
+/* Small screens */
+@media (max-width: 640px) {
+  .timeline { padding-left: 16px; }
+  .timeline::before { left: 7px; }
+  .timeline-item .dot { left: -3px; }
+  .title-text { font-size: 2rem; }
 }
 </style>
