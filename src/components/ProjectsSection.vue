@@ -92,14 +92,13 @@ export default {
   data() {
     return {
       currentFilter: 'All',
-      filters: ['All', 'Web Development', 'System Programming', 'Automation', 'Data Structures'],
       projects: [
         {
           title: 'GitSentry',
           image: require('@/assets/GitSentry.png'),
           description: 'GitSentry is an advanced shell script for streamlining Git operations. It features automated backups, branch validation, and custom pre-push checks, ensuring secure and efficient development workflows.',
           technologies: ['Bash', 'Shell Scripting', 'Git'],
-          category: 'Automation',
+          category: ['Automation'],
           github: 'https://github.com/MrBouzaffour/GitSentry.git',
           demo: ''
         },
@@ -108,7 +107,7 @@ export default {
           image: require('@/assets/WordGraphPredictor.png'),
           description: 'A system that predicts the next word based on user input using a graph-based approach. It involves data preprocessing, graph construction, and utilizing a command-line interface for interaction.',
           technologies: ['Java', 'Data Structures', 'Algorithms'],
-          category: 'Data Structures',
+          category: ['Data Structures', 'Java'],
           github: 'https://github.com/MrBouzaffour/WordGraphPredictor.git',
           demo: ''
         },
@@ -117,7 +116,7 @@ export default {
           image: require('@/assets/database_1.png'),
           description: 'A simple database project developed to showcase basic CRUD operations and database management.',
           technologies: ['C', 'Database Design', 'System Programming'],
-          category: 'System Programming',
+          category: ['System Programming', 'Data Structures'],
           github: 'https://github.com/MrBouzaffour/Simple-Database',
           demo: ''
         },
@@ -126,21 +125,26 @@ export default {
           image: require('@/assets/no-image-available.png'),
           description: 'This Python script allows users to send automated emails with ease. Leveraging smtplib and email libraries, the script supports plain text and HTML emails. Its designed to be secure and flexible, using environment variables to handle email credentials.',
           technologies: ['Python', 'SMTP', 'Automation'],
-          category: 'Automation',
+          category: ['Automation'],
           github: 'https://github.com/MrBouzaffour/Automated-Email-Sender.git',
           demo: ''
         }
       ]
     };
   },
-  computed: {
-    filteredProjects() {
-      if (this.currentFilter === 'All') {
-        return this.projects;
-      }
-      return this.projects.filter(project => project.category === this.currentFilter);
-    }
+computed: {
+  filters() {
+    const set = new Set();
+    this.projects.forEach(p => (p.category || p.categories || []).forEach(c => set.add(c)));
+    return ['All', ...Array.from(set)];
   },
+  filteredProjects() {
+    if (this.currentFilter === 'All') return this.projects;
+    const getCats = p => p.category || p.categories || [];
+    return this.projects.filter(p => getCats(p).includes(this.currentFilter));
+  }
+},
+
   methods: {
     setFilter(filter) {
       this.currentFilter = filter;
