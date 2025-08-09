@@ -106,50 +106,54 @@ export default {
       skillCategories: [
         {
           name: 'Languages',
-          icon: '💻',
+          icon: '',
           skills: [
-            { name: 'C', icon: '🔵', level: 5, description: 'System programming, embedded systems, memory management', projects: 3, isHovered: false },
-            { name: 'C++', icon: '🟦', level: 5, description: 'Object-oriented programming, algorithms, performance', projects: 3, isHovered: false },
-            { name: 'Python', icon: '🐍', level: 4, description: 'Scripting, automation, data processing', projects: 2, isHovered: false },
-            { name: 'Java', icon: '☕', level: 4, description: 'Software engineering, backend, OOP', projects: 2, isHovered: false }
+            { name: 'C', icon: '', level: 4, description: 'System programming, embedded systems, memory management', projects: 5, isHovered: false },
+            { name: 'C++', icon: '', level: 2, description: 'Object-oriented programming, algorithms, performance', projects: 0, isHovered: false },
+            { name: 'Python', icon: '', level: 4, description: 'Scripting, automation, data processing', projects: 4, isHovered: false },
+            { name: 'Java', icon: '', level: 3, description: 'Software engineering, backend, OOP', projects: 2, isHovered: false },
+            { name: 'Rust', icon: '', level: 2, description: 'Still learning', projects: 2, isHovered: false },
+            { name: 'JavaScript', icon: '', level: 3, description: 'Web development, Node.js, React', projects: 2, isHovered: false },
+            { name: 'C#', icon: '', level: 3, description: 'Game dev', projects: 2, isHovered: false }
           ]
         },
         {
           name: 'Frameworks & Tools',
-          icon: '🛠️',
+          icon: '',
           skills: [
-            { name: 'Vue.js', icon: '💚', level: 4, description: 'Frontend framework, SPA, reactivity', projects: 2, isHovered: false },
-            { name: 'Node.js', icon: '🟢', level: 4, description: 'Backend, REST APIs, npm ecosystem', projects: 2, isHovered: false },
-            { name: 'MongoDB', icon: '🍃', level: 4, description: 'NoSQL, document storage, aggregation', projects: 2, isHovered: false },
-            { name: 'Git', icon: '🔗', level: 5, description: 'Version control, collaboration, branching', projects: 8, isHovered: false },
-            { name: 'Docker', icon: '🐳', level: 3, description: 'Containerization, deployment, microservices', projects: 1, isHovered: false },
-            { name: 'Winsock API', icon: '🔌', level: 3, description: 'Network programming, sockets, TCP/IP', projects: 1, isHovered: false }
+            { name: 'Vue.js', icon: '', level: 3, description: 'Frontend framework, SPA, reactivity', projects: 2, isHovered: false },
+            { name: 'React', icon: '', level: 3, description: 'Frontend framework', projects: 2, isHovered: false },
+            { name: 'Node.js', icon: '', level: 4, description: 'Backend, REST APIs, npm ecosystem', projects: 2, isHovered: false },
+            { name: 'MongoDB', icon: '', level: 4, description: 'NoSQL, document storage, aggregation', projects: 2, isHovered: false },
+            { name: 'Git', icon: '', level: 5, description: 'Version control, collaboration, branching', projects: 20, isHovered: false },
+            { name: 'Docker', icon: '', level: 3, description: 'Containerization, deployment, microservices', projects: 1, isHovered: false },
+            { name: 'Winsock API', icon: '', level: 3, description: 'Network programming, sockets, TCP/IP', projects: 1, isHovered: false }
           ]
         },
         {
           name: 'Embedded Systems',
-          icon: '🔋',
+          icon: '',
           skills: [
-            { name: 'RISC-V Architecture', icon: '🏗️', level: 3, description: 'Low-level programming, system-level design', projects: 1, isHovered: false },
-            { name: 'Memory Management', icon: '💾', level: 4, description: 'Heap management, allocators, optimization', projects: 2, isHovered: false }
+            { name: 'RISC-V Architecture', icon: '', level: 3, description: 'Low-level programming, system-level design', projects: 1, isHovered: false },
+            { name: 'Memory Management', icon: '', level: 4, description: 'Heap management, allocators, optimization', projects: 2, isHovered: false }
           ]
         },
         {
           name: 'Methodologies',
-          icon: '📚',
+          icon: '',
           skills: [
-            { name: 'Agile', icon: '⚡', level: 4, description: 'Iterative development, collaboration', projects: 2, isHovered: false },
-            { name: 'TDD', icon: '✅', level: 3, description: 'Test-driven development, quality assurance', projects: 1, isHovered: false },
-            { name: 'Quality Assurance', icon: '🔍', level: 3, description: 'Testing, reliability, bug tracking', projects: 1, isHovered: false }
+            { name: 'Agile', icon: '', level: 4, description: 'Iterative development, collaboration', projects: 2, isHovered: false },
+            { name: 'TDD', icon: '', level: 3, description: 'Test-driven development, quality assurance', projects: 1, isHovered: false },
+            { name: 'Quality Assurance', icon: '', level: 3, description: 'Testing, reliability, bug tracking', projects: 1, isHovered: false }
           ]
         },
         {
           name: 'Collaboration',
-          icon: '🤝',
+          icon: '',
           skills: [
-            { name: 'Teamwork', icon: '👥', level: 5, description: 'Effective communication, group projects', projects: 5, isHovered: false },
-            { name: 'Planning & Prioritization', icon: '🗂️', level: 4, description: 'Task management, deadlines, organization', projects: 3, isHovered: false },
-            { name: 'Reliability', icon: '🕒', level: 5, description: 'Consistent delivery, responsibility', projects: 5, isHovered: false }
+            { name: 'Teamwork', icon: '', level: 5, description: 'Effective communication, group projects', projects: 5, isHovered: false },
+            { name: 'Planning & Prioritization', icon: '', level: 4, description: 'Task management, deadlines, organization', projects: 3, isHovered: false },
+            { name: 'Reliability', icon: '', level: 5, description: 'Consistent delivery, responsibility', projects: 5, isHovered: false }
           ]
         }
       ]
